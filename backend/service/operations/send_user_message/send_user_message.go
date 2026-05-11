@@ -1,11 +1,11 @@
 package send_user_message
 
 type Input struct {
-	UserID  string
-	Message string
+	UserID  string `json:"userId"`
+	Message string `json:"message"`
 }
 type Output struct {
-	MessageID string
+	MessageID string `json:"messageId"`
 }
 
 type Operation struct{}
