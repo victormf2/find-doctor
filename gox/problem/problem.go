@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/victormf2/framework/internal/sharehack"
+	"github.com/victormf2/gox/internal/errorsx"
 )
 
 const (
@@ -112,14 +112,14 @@ func (problem *Problem) UnmarshalJSON(data []byte) error {
 	var jsonMap map[string]json.RawMessage
 	err := json.Unmarshal(data, &jsonMap)
 	if err != nil {
-		return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling full JSON", err)
+		return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling full JSON", err)
 	}
 
 	problemType, hasProblemType := jsonMap["type"]
 	if hasProblemType {
 		err = json.Unmarshal(problemType, &problem.Type)
 		if err != nil {
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling type", err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling type", err)
 		}
 	}
 
@@ -127,28 +127,28 @@ func (problem *Problem) UnmarshalJSON(data []byte) error {
 	if hasProblemTitle {
 		err = json.Unmarshal(problemTitle, &problem.Title)
 		if err != nil {
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling tile", err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling tile", err)
 		}
 	}
 	problemStatus, hasProblemStatus := jsonMap["status"]
 	if hasProblemStatus {
 		err = json.Unmarshal(problemStatus, &problem.Status)
 		if err != nil {
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling status", err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling status", err)
 		}
 	}
 	problemDetail, hasProblemDetail := jsonMap["detail"]
 	if hasProblemDetail {
 		err = json.Unmarshal(problemDetail, &problem.Detail)
 		if err != nil {
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling detail", err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling detail", err)
 		}
 	}
 	problemInstance, hasProblemInstance := jsonMap["instance"]
 	if hasProblemInstance {
 		err = json.Unmarshal(problemInstance, &problem.Instance)
 		if err != nil {
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling instance", err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, "unmarshalling instance", err)
 		}
 	}
 
@@ -172,7 +172,7 @@ func (problem *Problem) UnmarshalJSON(data []byte) error {
 		err = json.Unmarshal(jsonValue, &val)
 		if err != nil {
 			message := fmt.Sprintf("unmarshalling %s", key)
-			return sharehack.JoinErrors(ErrProblemUnmarshalJSON, message, err)
+			return errorsx.JoinErrors(ErrProblemUnmarshalJSON, message, err)
 		}
 		problem.Extensions[key] = val
 	}

@@ -1,4 +1,4 @@
-module github.com/victormf2/framework
+module github.com/victormf2/gox
 
 go 1.26.3
 

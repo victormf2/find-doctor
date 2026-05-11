@@ -3,8 +3,8 @@ package apihttp
 import (
 	"net/http"
 
-	"github.com/victormf2/framework/problem"
 	"github.com/victormf2/gosyringe"
+	"github.com/victormf2/gox/problem"
 )
 
 func ErrorHandler(w http.ResponseWriter, r *http.Request, err error, c *gosyringe.Container) {

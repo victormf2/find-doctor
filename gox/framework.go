@@ -1,9 +1,9 @@
-package framework
+package gox
 
 import (
-	"github.com/victormf2/framework/internal"
-	"github.com/victormf2/framework/internal/sharehack"
-	"github.com/victormf2/framework/types"
+	"github.com/victormf2/gox/internal"
+	"github.com/victormf2/gox/internal/errorsx"
+	"github.com/victormf2/gox/types"
 )
 
 type IApplication = types.IApplication
@@ -14,4 +14,4 @@ func New() IApplicationBuilder {
 	return internal.NewApplication()
 }
 
-var GoxError = sharehack.GoxError
+var GoxError = errorsx.GoxError

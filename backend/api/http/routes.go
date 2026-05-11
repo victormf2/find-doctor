@@ -5,8 +5,8 @@ import (
 	"find-doctor/service/operations/send_user_message"
 	"net/http"
 
-	"github.com/victormf2/framework/httpx"
 	"github.com/victormf2/gosyringe"
+	"github.com/victormf2/gox/httpx"
 )
 
 func AddRoutes(c *gosyringe.Container, mux *http.ServeMux) {

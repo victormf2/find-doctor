@@ -1,4 +1,4 @@
-package sharehack
+package errorsx
 
 import (
 	"errors"
@@ -9,6 +9,5 @@ import (
 var GoxError = errors.New("gox")
 
 func JoinErrors(goxErr error, message string, sourceErr error) error {
-
 	return fmt.Errorf("%w: %w: %s: %w", GoxError, goxErr, message, sourceErr)
 }
